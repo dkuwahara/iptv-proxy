@@ -1,8 +1,5 @@
-FROM gradle:jdk17-alpine AS build
+FROM amazoncorretto:17-alpine
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN ./gradlew build --no-daemon 
-
-FROM amazoncorretto:17-alpine
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/iptv-proxy.jar
-ENTRYPOINT java -jar /app/iptv-proxy.jar -Dconfig=/config/config.yml
+ENTRYPOINT java -jar /home/gradle/src/build/libs/iptv-proxy-all.jar -Dconfig=/config/config.yml
