@@ -41,12 +41,10 @@ dependencies {
     implementation("io.undertow:undertow-core:$undertowVersion")
 }
 
-jar {
-  manifest {
-    attributes(
-      'Main-Class': 'com.kvaster.iptv.App'
-    )
-  }
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.kvaster.iptv.App"
+    }
 }
 
 java {
