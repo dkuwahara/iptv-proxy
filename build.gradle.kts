@@ -44,7 +44,6 @@ dependencies {
 jar {
   manifest {
     attributes(
-      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
       'Main-Class': 'com.kvaster.iptv.App'
     )
   }
