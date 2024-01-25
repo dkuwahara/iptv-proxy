@@ -41,19 +41,6 @@ dependencies {
     implementation("io.undertow:undertow-core:$undertowVersion")
 }
 
-tasks.create("MyFatJar", Jar::class) {
-    group = "build" 
-    description = "Creates a self-contained fat JAR of the application that can be run."
-    manifest.attributes["Main-Class"] = "com.kvaster.iptv.App"
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    val dependencies = configurations
-        .runtimeClasspath
-        .get()
-        .map(::zipTree)
-    from(dependencies)
-    with(tasks.jar.get())
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
