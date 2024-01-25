@@ -42,7 +42,7 @@ dependencies {
 }
 
 tasks.create("MyFatJar", Jar::class) {
-    group = build" 
+    group = "build" 
     description = "Creates a self-contained fat JAR of the application that can be run."
     manifest.attributes["Main-Class"] = "com.kvaster.iptv.App"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
