@@ -10,7 +10,7 @@ val undertowVersion = "2.2.17.Final"
 
 plugins {
     java
-    id 'application'
+    application
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
