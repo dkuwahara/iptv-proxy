@@ -5,4 +5,4 @@ RUN gradle build --no-daemon
 
 FROM amazoncorretto:8-alpine3.17-jre
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/iptv-proxy.jar
-CMD ["java", "-jar", "build/libs/iptv-proxy-all.jar" "-Dconfig=/config/config.yml"]
+ENTRYPOINT java -jar build/libs/iptv-proxy-all.jar -Dconfig=/config/config.yml
