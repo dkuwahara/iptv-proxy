@@ -40,14 +40,18 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
     implementation("io.undertow:undertow-core:$undertowVersion")
 }
-tasks.jar {
+
+tasks.create("MyFatJar", Jar::class) {
+    group = build" 
+    description = "Creates a self-contained fat JAR of the application that can be run."
     manifest.attributes["Main-Class"] = "com.kvaster.iptv.App"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     val dependencies = configurations
         .runtimeClasspath
         .get()
-        .map(::zipTree) // OR .map { zipTree(it) }
+        .map(::zipTree)
     from(dependencies)
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    with(tasks.jar.get())
 }
 
 java {
