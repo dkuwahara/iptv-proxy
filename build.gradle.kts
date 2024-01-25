@@ -41,6 +41,15 @@ dependencies {
     implementation("io.undertow:undertow-core:$undertowVersion")
 }
 
+jar {
+  manifest {
+    attributes(
+      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'com.kvaster.iptv.App'
+    )
+  }
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
