@@ -46,6 +46,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.kvaster.iptv.App'
+    }
+}
+
 application {
     mainClass.set("com.kvaster.iptv.App")
 }
