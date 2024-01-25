@@ -41,6 +41,25 @@ dependencies {
     implementation("io.undertow:undertow-core:$undertowVersion")
 }
 
+import org.gradle.jvm.tasks.Jar
+
+val fatJar = task("fatJar", type = Jar::class) {
+    baseName = "${project.name}-fat"
+    manifest {
+        attributes["Implementation-Title"] = "Gradle Jar File Example"
+        attributes["Implementation-Version"] = version
+        attributes["Main-Class"] = "com.mkyong.DateUtils"
+    }
+    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks.jar.get() as CopySpec)
+}
+
+tasks {
+    "build" {
+        dependsOn(fatJar)
+    }
+}
+
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "com.kvaster.iptv.App"
