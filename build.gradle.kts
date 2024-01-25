@@ -26,7 +26,7 @@ repositories {
 tasks.create("MyFatJar", Jar::class) {
     group = "build"
     description = "Creates a self-contained fat JAR of the application that can be run."
-    manifest.attributes["Main-Class"] = "com.example.MyMainClass"
+    manifest.attributes["Main-Class"] = "com.kvaster.iptv.App"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     val dependencies = configurations
         .runtimeClasspath
