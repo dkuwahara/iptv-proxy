@@ -10,7 +10,7 @@ val undertowVersion = "2.2.17.Final"
 
 plugins {
     java
-    application
+    id 'application'
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -44,12 +44,6 @@ dependencies {
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.kvaster.iptv.App'
-    }
 }
 
 application {
